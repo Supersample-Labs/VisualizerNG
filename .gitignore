@@ -1,0 +1,16 @@
+.DS_Store
+._*
+**/bin/
+**/obj/
+**/.codex/
+**/.vs/
+**/xcuserdata/
+**/*.xcuserstate
+**/DerivedData/
+Windows/artifacts/
+Windows/to be deleted/
+Windows/OpenMD/
+*.pfx
+*.p12
+*.cer
+*.user

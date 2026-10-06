@@ -1,0 +1,169 @@
+<Window x:Class="Visualizer.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gl="clr-namespace:OpenTK.Wpf;assembly=GLWpfControl"
+        xmlns:ui="clr-namespace:Visualizer.App.UI"
+        Title="VisualizerNG"
+        Icon="Assets/App.ico"
+        Width="1320"
+        Height="760"
+        MinWidth="1080"
+        MinHeight="600"
+        Background="#111318"
+        KeyDown="OnKeyDown"
+        Closing="OnClosing">
+    <Grid x:Name="Root" Background="#111318">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="282" />
+        </Grid.RowDefinitions>
+
+        <Border x:Name="VisualizerHost"
+                Margin="16,16,16,8"
+                Background="#06080C"
+                BorderBrush="#262B35"
+                BorderThickness="1"
+                CornerRadius="6"
+                ClipToBounds="True">
+            <gl:GLWpfControl x:Name="GlView" />
+        </Border>
+
+        <Grid x:Name="ControlsPanel"
+              Grid.Row="1"
+              Margin="16,8,16,16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="118" />
+                
+                
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.1*" />
+                <ColumnDefinition Width="1.5*" />
+                <ColumnDefinition Width="1.1*" />
+                <ColumnDefinition Width="1.7*" />
+                <ColumnDefinition Width="1.2*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Output Device" Foreground="#7E8797" FontSize="12" FontWeight="SemiBold" />
+                <ComboBox x:Name="DeviceSelector"
+                          Height="34"
+                          Margin="0,6,18,0"
+                          SelectionChanged="OnDeviceChanged" />
+                <TextBlock x:Name="StatusText"
+                           Margin="0,10,18,0"
+                           Foreground="#7E8797"
+                           FontSize="12"
+                           ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+                           TextTrimming="CharacterEllipsis" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Visualizer" Foreground="#7E8797" FontSize="12" FontWeight="SemiBold" />
+                <ComboBox x:Name="VisualizerSelector"
+                          Height="34"
+                          Margin="0,6,18,0"
+                          SelectionChanged="OnVisualizerChanged" />
+                <Button x:Name="FullscreenButton"
+                        Height="34"
+                        Margin="0,14,18,0"
+                        Click="OnFullscreenClick"
+                        Content="Fullscreen" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Margin="0,0,18,0">
+                <TextBlock Text="Colors" Foreground="#7E8797" FontSize="12" FontWeight="SemiBold" />
+                <ComboBox x:Name="ColorSelector" Height="34" Margin="0,6,0,0" SelectionChanged="OnColorChanged"
+                          ToolTip="Choose colors for the current visualizer">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="12" Height="12" CornerRadius="6" Background="{Binding Swatch}" Margin="0,0,7,0" />
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <UniformGrid Grid.Column="3"
+                         Columns="2"
+                         Rows="2"
+                         Margin="0,0,22,0">
+                <ui:MeterControl x:Name="LevelMeter" Label="Level" Margin="0,0,12,10" />
+                <ui:MeterControl x:Name="BassMeter" Label="Bass" Margin="0,0,0,10" />
+                <ui:MeterControl x:Name="MidMeter" Label="Mid" Margin="0,0,12,0" />
+                <ui:MeterControl x:Name="TrebleMeter" Label="Treble" />
+            </UniformGrid>
+
+            <StackPanel Grid.Column="4">
+                <TextBlock Text="Sensitivity" Foreground="#7E8797" FontSize="12" FontWeight="SemiBold" />
+                <Slider x:Name="SensitivitySlider"
+                        Minimum="0.4"
+                        Maximum="4"
+                        Value="1.4"
+                        TickFrequency="0.1" />
+                <TextBlock Text="Smoothing" Foreground="#7E8797" FontSize="12" FontWeight="SemiBold" Margin="0,16,0,0" />
+                <Slider x:Name="SmoothingSlider"
+                        Minimum="0"
+                        Maximum="0.96"
+                        Value="0.78"
+                        TickFrequency="0.02" />
+                <Button Content="About &amp; privacy" Click="OnAboutClick" Height="24" Margin="0,5,0,0" />
+            </StackPanel>
+            <Grid Grid.Row="1" Grid.ColumnSpan="5" Margin="0,8,0,0">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="3*" /><ColumnDefinition Width="16" /><ColumnDefinition Width="2*" /></Grid.ColumnDefinitions>
+                <Border Background="#191D25" BorderBrush="#303744" BorderThickness="1" CornerRadius="6" Padding="12,8">
+                    <Grid>
+                        <Grid.RowDefinitions><RowDefinition Height="32" /><RowDefinition Height="32" /><RowDefinition Height="32" /></Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                        <DockPanel Grid.ColumnSpan="2" LastChildFill="True">
+                            <TextBlock Text="Rotation" Foreground="White" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,14,0" />
+                            <Button DockPanel.Dock="Right" Content="Reset" Click="OnResetRotation" Width="60" Height="26" Margin="12,0,0,0" />
+                            <ComboBox x:Name="RotationModeSelector" SelectedIndex="0" Height="28" SelectionChanged="OnEffectModeChanged" AutomationProperties.Name="Rotation mode">
+                                <ComboBoxItem Content="Off" /><ComboBoxItem Content="2D spin" /><ComboBoxItem Content="3D spin" />
+                            </ComboBox>
+                        </DockPanel>
+                        <DockPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,4,0,0">
+                            <TextBlock Text="Angle" Width="44" Foreground="#A4AEBD" VerticalAlignment="Center" />
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding Value, ElementName=RotationSlider, StringFormat={}{0:0}&#176;}" Width="44" Foreground="White" VerticalAlignment="Center" />
+                            <Slider x:Name="RotationSlider" Minimum="0" Maximum="360" Value="0" TickFrequency="15" IsSnapToTickEnabled="True" VerticalAlignment="Center" AutoToolTipPlacement="TopLeft" AutomationProperties.Name="Rotation angle" />
+                        </DockPanel>
+                        <DockPanel Grid.Row="2" Margin="0,4,12,0">
+                            <TextBlock Text="Tilt" Width="44" Foreground="#A4AEBD" VerticalAlignment="Center" />
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding Value, ElementName=TiltSlider, StringFormat={}{0:0}&#176;}" Width="44" Foreground="White" VerticalAlignment="Center" />
+                            <Slider x:Name="TiltSlider" Minimum="-180" Maximum="180" Value="0" TickFrequency="15" IsSnapToTickEnabled="True" VerticalAlignment="Center" AutoToolTipPlacement="TopLeft" AutomationProperties.Name="3D tilt angle" />
+                        </DockPanel>
+                        <DockPanel Grid.Row="2" Grid.Column="1" Margin="0,4,0,0">
+                            <TextBlock Text="Turn" Width="40" Foreground="#A4AEBD" VerticalAlignment="Center" />
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding Value, ElementName=TurnSlider, StringFormat={}{0:0}&#176;}" Width="44" Foreground="White" VerticalAlignment="Center" />
+                            <Slider x:Name="TurnSlider" Minimum="-180" Maximum="180" Value="0" TickFrequency="15" IsSnapToTickEnabled="True" VerticalAlignment="Center" AutoToolTipPlacement="TopLeft" AutomationProperties.Name="3D turn angle" />
+                        </DockPanel>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="2" Background="#191D25" BorderBrush="#303744" BorderThickness="1" CornerRadius="6" Padding="12,8">
+                    <Grid>
+                        <Grid.RowDefinitions><RowDefinition Height="32" /><RowDefinition Height="32" /><RowDefinition Height="32" /></Grid.RowDefinitions>
+                        <DockPanel>
+                            <TextBlock Text="CRT effects" Foreground="White" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,14,0" />
+                            <ComboBox x:Name="CrtModeSelector" SelectedIndex="0" Height="28" SelectionChanged="OnEffectModeChanged" AutomationProperties.Name="CRT effect mode">
+                                <ComboBoxItem Content="Off" /><ComboBoxItem Content="Snow" /><ComboBoxItem Content="Interlace" /><ComboBoxItem Content="Snow + Interlace" />
+                            </ComboBox>
+                        </DockPanel>
+                        <DockPanel Grid.Row="1" Margin="0,4,0,0">
+                            <TextBlock Text="Snow" Width="66" Foreground="#A4AEBD" VerticalAlignment="Center" />
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding Value, ElementName=SnowSlider, StringFormat={}{0:P0}}" Width="44" Foreground="White" VerticalAlignment="Center" />
+                            <Slider x:Name="SnowSlider" Minimum="0" Maximum="1" Value="0.3" SmallChange="0.05" LargeChange="0.1" VerticalAlignment="Center" AutomationProperties.Name="CRT snow intensity" />
+                        </DockPanel>
+                        <DockPanel Grid.Row="2" Margin="0,4,0,0">
+                            <TextBlock Text="Interlace" Width="66" Foreground="#A4AEBD" VerticalAlignment="Center" />
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding Value, ElementName=InterlaceSlider, StringFormat={}{0:P0}}" Width="44" Foreground="White" VerticalAlignment="Center" />
+                            <Slider x:Name="InterlaceSlider" Minimum="0" Maximum="1" Value="0.5" SmallChange="0.05" LargeChange="0.1" VerticalAlignment="Center" AutomationProperties.Name="CRT interlace scan intensity" ToolTip="Three downward-moving scan bands" />
+                        </DockPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

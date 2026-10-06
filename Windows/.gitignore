@@ -1,0 +1,9 @@
+**/bin/
+**/obj/
+artifacts/
+*.pfx
+*.p12
+*.cer
+*.user
+
+to be deleted/

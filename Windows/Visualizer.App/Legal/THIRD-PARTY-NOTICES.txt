@@ -1,0 +1,9 @@
+This application includes NAudio, OpenTK, OpenTK.GLWpfControl, GLFW, and Microsoft .NET components.
+
+NAudio 2.2.1: Copyright Mark Heath. MIT license.
+OpenTK 4.9.4: Copyright the Open Toolkit contributors. MIT license.
+OpenTK.GLWpfControl 4.3.6: Copyright Team OpenTK and contributors. MIT license.
+GLFW 3.4 (OpenTK redistribution 3.4.0.44): zlib/libpng license.
+Microsoft .NET and supporting libraries: MIT and accompanying third-party notices.
+
+Full upstream license texts and notices are included in the ThirdParty subdirectory beside this file. DependencyInventory.json identifies the NuGet packages used by this build. The application publisher's own code is not licensed by this notice.

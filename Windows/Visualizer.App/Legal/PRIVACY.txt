@@ -1,0 +1,11 @@
+VisualizerNG - Privacy
+
+The app processes audio currently playing through your selected Windows output device to draw a waveform, spectrum, and level meters. This may include any sounds played through that output, not just music.
+
+Audio samples are held temporarily in memory for visualization. The app does not save audio recordings or send audio to a server. Closing the app ends capture. It does not access your microphone, inspect your music files, or identify songs.
+
+The app has no accounts, advertising, analytics SDKs, or application network requests. Device names and technical errors may appear in its status display and Windows diagnostic trace output. It does not intentionally write those diagnostics to a log file.
+
+Windows may collect its own installation or crash diagnostics under Microsoft's policies. Those services are separate from this app.
+
+For support, open an issue at https://github.com/Supersample-Labs/VisualizerNG/issues. Include only information you choose to share.

@@ -1,0 +1,122 @@
+[
+    {
+        "Package":  "Microsoft.NETCore.Platforms/3.1.0",
+        "License":  "MIT",
+        "Copyright":  "© Microsoft Corporation. All rights reserved."
+    },
+    {
+        "Package":  "Microsoft.Win32.Registry/4.7.0",
+        "License":  "MIT",
+        "Copyright":  "© Microsoft Corporation. All rights reserved."
+    },
+    {
+        "Package":  "NAudio/2.2.1",
+        "License":  "license.txt",
+        "Copyright":  "© Mark Heath 2023"
+    },
+    {
+        "Package":  "NAudio.Asio/2.2.1",
+        "License":  "MIT",
+        "Copyright":  "© Mark Heath 2023"
+    },
+    {
+        "Package":  "NAudio.Core/2.2.1",
+        "License":  "MIT",
+        "Copyright":  "© Mark Heath 2023"
+    },
+    {
+        "Package":  "NAudio.Midi/2.2.1",
+        "License":  "MIT",
+        "Copyright":  "© Mark Heath 2023"
+    },
+    {
+        "Package":  "NAudio.Wasapi/2.2.1",
+        "License":  "MIT",
+        "Copyright":  "© Mark Heath 2023"
+    },
+    {
+        "Package":  "NAudio.WinForms/2.2.1",
+        "License":  "MIT",
+        "Copyright":  "© Mark Heath 2023"
+    },
+    {
+        "Package":  "NAudio.WinMM/2.2.1",
+        "License":  "MIT",
+        "Copyright":  "© Mark Heath 2023"
+    },
+    {
+        "Package":  "OpenTK/4.9.4",
+        "License":  "MIT",
+        "Copyright":  "Copyright (c) 2006 - 2020 Stefanos Apostolopoulos \u003cstapostol@gmail.com\u003e for the Open Toolkit library."
+    },
+    {
+        "Package":  "OpenTK.Audio.OpenAL/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.Compute/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.Core/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.GLWpfControl/4.3.6",
+        "License":  "MIT",
+        "Copyright":  "Copyright (c) 2022 Team OpenTK."
+    },
+    {
+        "Package":  "OpenTK.Graphics/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.Input/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.Mathematics/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.redist.glfw/3.4.0.44",
+        "License":  "COPYING.md",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.Windowing.Common/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.Windowing.Desktop/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "OpenTK.Windowing.GraphicsLibraryFramework/4.9.4",
+        "License":  "MIT",
+        "Copyright":  null
+    },
+    {
+        "Package":  "System.Runtime.CompilerServices.Unsafe/6.0.0",
+        "License":  "MIT",
+        "Copyright":  "© Microsoft Corporation. All rights reserved."
+    },
+    {
+        "Package":  "System.Security.AccessControl/4.7.0",
+        "License":  "MIT",
+        "Copyright":  "© Microsoft Corporation. All rights reserved."
+    },
+    {
+        "Package":  "System.Security.Principal.Windows/4.7.0",
+        "License":  "MIT",
+        "Copyright":  "© Microsoft Corporation. All rights reserved."
+    }
+]

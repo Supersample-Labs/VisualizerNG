@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>false</PublishSingleFile>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <ApplicationIcon>Assets\App.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <AssemblyName>VisualizerNG</AssemblyName>
+    <RootNamespace>Visualizer.App</RootNamespace>
+    <Title>VisualizerNG</Title>
+    <Product>VisualizerNG</Product>
+    <Description>Real-time waveform and spectrum visualization for Windows playback.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\App.ico" />
+    <Resource Include="Assets\IconMaster.png" />
+    <Content Include="Legal\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="OpenTK" Version="4.9.4" />
+    <PackageReference Include="OpenTK.GLWpfControl" Version="4.3.6" />
+  </ItemGroup>
+
+</Project>
