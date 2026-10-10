@@ -21,4 +21,9 @@ if [[ ! -d "$PRODUCT" ]]; then
 fi
 rm -rf "$APP"
 ditto "$PRODUCT" "$APP"
+# Sign the complete bundle so macOS can associate capture consent with the app.
+# The linker-generated executable signature alone does not seal Info.plist.
+BUNDLE_IDENTIFIER=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Contents/Info.plist")
+codesign --force --sign - --identifier "$BUNDLE_IDENTIFIER" "$APP"
+codesign --verify --strict --verbose=2 "$APP"
 echo "Release build created: $APP"
